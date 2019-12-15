@@ -1,0 +1,13 @@
+{
+  "name": "sequelize",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "mariadb": "^2.1.4",
+    "sequelize": "^5.21.3"
+  }
+}
