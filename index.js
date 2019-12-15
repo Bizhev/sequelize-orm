@@ -1,4 +1,5 @@
-process.env.db_timezone = 'Etc/GMT+3';
+// process.env.db_timezone = '+03:00';
+process.env.db_timezone = 'GMT';
 
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
@@ -58,7 +59,7 @@ const User = sequelize.define('user', {
 sequelize.sync();
 /////////////
 
-let cmd = 'delete';
+let cmd = '';
 if (cmd==='update') {
     // Change everyone without a last name to "Doe"
     User.update({ firstName: "Dolet" }, {
@@ -91,7 +92,16 @@ if (cmd==='delete') {
 }
 if (cmd==='insert') {
     // Create a new user
-
+    LoyaltyCard.create({
+        series: 123,
+        number: 12345,
+        date_release: new Date(2020, 12, 12),
+        date_end_active: new Date(2021, 12, 12),
+        status: 1
+    })
+    .then( res => {
+        console.log('card is greate =>',res.series + res.number)
+    });
     User.create({ firstName: "Jane", lastName: "Doe" })
     .then(jane => {
         console.log("Jane's auto-generated ID:", jane.id);
